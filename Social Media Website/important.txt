@@ -1,0 +1,6 @@
+GGI Achievers is a social media website, that is exclusively build for the students and faculty of GGI ( Gulzar Group of Institutes ) 
+
+It is build using PHP and MySQL in the backend.
+
+It was My Major Project in the Degree of BCA
+ 
