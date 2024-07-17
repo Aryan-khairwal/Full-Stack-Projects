@@ -6,7 +6,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Auth from './pages/auth/Auth'
 import Dashboard from './pages/dashboard/index'
 import Header from './pages/Header'
-import FTcontextProvider from './contexts/FinanceTrackerContext'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <FTcontextProvider> <Dashboard /> </FTcontextProvider>,
+    element: <Dashboard />,
   }
 ])
 

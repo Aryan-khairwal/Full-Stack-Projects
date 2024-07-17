@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useFinancialRecords } from '../../contexts/FinanceTrackerContext'
 
 function RecordForm() {
   const [description, setDescription] = useState('')
@@ -7,6 +8,8 @@ function RecordForm() {
   const [paymentMethod, setPaymentMethod] = useState('')
 
   const [financialRecords, setFinancialRecords] = useState([])
+
+  const { addRecord } = useFinancialRecords()
 
 
   const handleSubmit = async (e) => {
@@ -19,15 +22,17 @@ function RecordForm() {
       paymentMethod
     }
 
-    try {
-      await fetch('http://localhost:3001/', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(record)
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   await fetch('http://localhost:3001/', {
+    //     method: 'POST',
+    //     headers: { 'content-type': 'application/json' },
+    //     body: JSON.stringify(record)
+    //   })
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    addRecord()
 
     setFinancialRecords(prev => [...prev, record])
 
@@ -35,6 +40,7 @@ function RecordForm() {
     setCategory('')
     setDescription('')
     setPaymentMethod('')
+
   }
 
   return (<>
