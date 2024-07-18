@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 export const FinanceTrackerContext = createContext({
   records: [{}],
+  getRecords: (id) => { },
   addRecord: function (record) { },
   updateRecord: (id, newRecord) => { },
   deleteRecord: function (id) { }

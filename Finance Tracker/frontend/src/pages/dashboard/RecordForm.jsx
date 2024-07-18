@@ -9,12 +9,13 @@ function RecordForm() {
 
   const [financialRecords, setFinancialRecords] = useState([])
 
+
+
   const { addRecord } = useFinancialRecords()
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const record = {
       amount,
       category,
@@ -22,17 +23,7 @@ function RecordForm() {
       paymentMethod
     }
 
-    // try {
-    //   await fetch('http://localhost:3001/', {
-    //     method: 'POST',
-    //     headers: { 'content-type': 'application/json' },
-    //     body: JSON.stringify(record)
-    //   })
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
-    addRecord()
+    addRecord(record)
 
     setFinancialRecords(prev => [...prev, record])
 

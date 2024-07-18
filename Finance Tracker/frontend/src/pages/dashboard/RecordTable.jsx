@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from 'react'
-
+import { useFinancialRecords } from '../../contexts/FinanceTrackerContext'
 
 function RecordTable() {
 
-  const [financialRecords, setFinancialRecords] = useState([])
+  const { records, deleteRecord, updateRecord } = useFinancialRecords()
 
-
-
-
-  const getRecords = async () => {
-    const result = await fetch('http://localhost:3001/')
-    const records = await result.json()
-    setFinancialRecords(records)
-  }
-
-  useEffect(() => { getRecords() }, [])
-
-
-  console.log(financialRecords);
   return (
     <div className="table-container w-full " >
-      <table className='border border-white w-full'>
+      <table className='border border-white w-full align-middle'>
         <thead className='bg-sky-600 text-white h-7 '>
           <th>Description</th>
           <th>Amount</th>
@@ -30,13 +17,13 @@ function RecordTable() {
         </thead>
         <tbody >
 
-          {financialRecords.map((record, index) =>
+          {records.map((record, index) =>
             <tr key={index} className='even:bg-white  text-center'>
               <td>{record.description} </td>
               <td>{record.amount} </td>
               <td>{record.category} </td>
               <td>{record.paymentMethod} </td>
-              <td><button>Edit</button> <button>Delete</button> </td>
+              <td ><button className='px-2 mx-2 hover:underline'>Edit</button><button className='hover:underline' onClick={() => deleteRecord(record._id)}>Delete</button> </td>
             </tr>)}
 
         </tbody>

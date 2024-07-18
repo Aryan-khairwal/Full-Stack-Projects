@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
     res.send(response)
   })
   .delete('/', async (req, res) => {
-    const id = req.body._id
+    const id = req.body
 
-    const response = await financialRecord.findOneAndDelete({ _id: id })
+    const response = await financialRecord.findOneAndDelete(id)
     res.send(response)
   })
 
